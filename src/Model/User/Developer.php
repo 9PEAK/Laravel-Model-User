@@ -1,6 +1,6 @@
 <?php
 
-namespace Peak\Service\User;
+namespace Peak\Model\User;
 /**
  * 开发者 仅限测试环境使用
  * */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Peak\Service\User;
+namespace Peak\Model\User;
 
 use Illuminate\Support\ServiceProvider;
 

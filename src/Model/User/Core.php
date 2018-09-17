@@ -1,6 +1,6 @@
 <?php
 
-namespace Peak\Service\User;
+namespace Peak\Model\User;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
