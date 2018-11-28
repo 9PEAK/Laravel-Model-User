@@ -44,7 +44,7 @@ class Core extends Authenticatable
 		parent::boot();
 
 		static::addGlobalScope('type', function (Builder $builder) {
-			$builder->where('type', static::TYPE);
+			defined('static::TYPE') && $builder->where('type', static::TYPE);
 		});
 
 		static::saving(function($model) {
@@ -53,28 +53,16 @@ class Core extends Authenticatable
 	}
 
 
-	protected static function encode_pwd ($pwd)
-	{
-		return md5($pwd.$pwd);
-	}
-
-
 	/**
-	 * 手动设置密码
+	 * 检测帐号是否存在
 	 * */
-	public function setPwd($pwd)
+	static function existAccount ($account, $id=0)
 	{
-		$this->pwd = self::encode_pwd($pwd);
-		return $this;
-	}
-
-
-	/**
-	 * 自动设置密码
-	 * */
-	public function setPwdAttribute ($pwd)
-	{
-		$this->attributes['pwd'] = self::encode_pwd($pwd);
+		$qry = static::where('account', $account);
+		if ($id) {
+			$qry->where('id', '!=', $id);
+		}
+		return $qry->count();
 	}
 
 
@@ -85,6 +73,26 @@ class Core extends Authenticatable
 	{
 		return static::where('account', $account)->first();
 	}
+
+
+	/**
+	 * 手动设置密码
+	 * */
+	public function setPwd($pwd)
+	{
+		$this->pwd = bcrypt($pwd);
+		return $this;
+	}
+
+
+	/**
+	 * 自动设置密码
+	 * */
+	public function setPwdAttribute ($pwd)
+	{
+		$this->attributes['pwd'] = bcrypt($pwd);
+	}
+
 
 
 	### scope查询

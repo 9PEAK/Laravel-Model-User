@@ -16,7 +16,7 @@ class PeakUser extends Migration
     {
 		DB::statement('CREATE TABLE IF NOT EXISTS `9peak_user` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `type` tinyint(4) NOT NULL,
+  `type` float(3,1) NOT NULL,
   `account` varchar(40) NOT NULL,
   `pwd` text,
   `name` varchar(30) DEFAULT NULL COMMENT \'姓名\',
@@ -30,6 +30,7 @@ class PeakUser extends Migration
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT \'更新时间\',
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`,`type`) USING BTREE,
+  KEY `type` (`type`),
   KEY `group_id` (`group_id`),
   KEY `status` (`status`),
   KEY `name` (`name`),
