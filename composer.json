@@ -10,7 +10,9 @@
         }
     ],
     "require": {
-        "php": ">= 5.3"
+        "php": ">= 5.3",
+        "9peak/laravel-component": "v1.0.2",
+        "tymon/jwt-auth": "1.0.0-rc.3"
     },
     "require-dev": {},
     "autoload": {

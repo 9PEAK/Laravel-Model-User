@@ -13,13 +13,10 @@ class Developer extends Core
 		'type', 'pwd', 'photo', 'group_id', 'status'
 	];
 
-
-
 	public function user ($cls)
 	{
 		return $this->hasOne($cls, 'id', 'name');
 	}
-
 
 
 }
