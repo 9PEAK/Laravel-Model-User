@@ -18,5 +18,4 @@ class Developer extends Core
 		return $this->hasOne($cls, 'id', 'name');
 	}
 
-
 }
