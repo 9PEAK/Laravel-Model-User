@@ -80,7 +80,7 @@ class Core extends Authenticatable
 	 * */
 	public function setPwd($pwd)
 	{
-		$this->pwd = bcrypt($pwd);
+		$this->attributes['pwd'] = bcrypt($pwd);
 		return $this;
 	}
 
