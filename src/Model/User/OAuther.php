@@ -30,11 +30,13 @@ class OAuther extends \Illuminate\Database\Eloquent\Model
 	protected static $types = [
 		'token',
 		'wechat',
+		'admin',
 	];
 
 
 	/**
 	 * 编译字符类型的type
+	 * @param $type string 类型
 	 * */
 	static function encodeType ($type)
 	{
@@ -42,8 +44,13 @@ class OAuther extends \Illuminate\Database\Eloquent\Model
 		return $type===false ? false : $type;
 	}
 
+
 	### 作用域查询
 
+	/**
+	 * 检索type
+	 * @param $type string|int
+	 * */
 	public function scopeWhereType ($query, $type)
 	{
 		$type = self::encodeType($type);
@@ -51,12 +58,21 @@ class OAuther extends \Illuminate\Database\Eloquent\Model
 	}
 
 
+	/**
+	 * 检索id
+	 * @param $type string|int
+	 * */
 	public function scopeWhereId ($query, $id, $type)
 	{
 		return $query->where('id', $id)->whereType($type);
 	}
 
 
+	/**
+	 * 检索id
+	 * @param $id string
+	 * @param $type string|int
+	 * */
 	public function scopeWhereUserId ($query, $userId, $type)
 	{
 		return $query->where('user_id', $userId)->whereType($type);

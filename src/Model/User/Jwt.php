@@ -5,8 +5,6 @@ namespace Peak\Model\User;
 class Jwt extends Core implements \Tymon\JWTAuth\Contracts\JWTSubject
 {
 
-	use \Peak\Laravel\Eloquent\Model\Translater;
-
 	public function getJWTIdentifier()
 	{
 		return $this->getKey();
