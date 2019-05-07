@@ -39,13 +39,13 @@ class PeakUser extends Migration
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
 
 
-		DB::statement('CREATE TABLE IF NOT EXISTS `oauther` (
+		DB::statement('CREATE TABLE IF NOT EXISTS `9peak_oauther` (
   `id` varchar(50) NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `type` tinyint(4) NOT NULL,
   UNIQUE KEY `id` (`id`,`type`),
   UNIQUE KEY `user_id` (`user_id`,`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=\'授权登录者\';');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=\'授权用户\';');
 
 
     }

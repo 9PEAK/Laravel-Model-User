@@ -25,7 +25,7 @@ class OAuther extends \Illuminate\Database\Eloquent\Model
 	];
 
 
-	use \Peak\Plugin\Debuger;
+	use \Peak\Plugin\Debuger\Base;
 
 	protected static $types = [
 		'token',
