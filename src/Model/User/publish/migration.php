@@ -16,7 +16,7 @@ class PeakUser extends Migration
     {
 		DB::statement('CREATE TABLE IF NOT EXISTS `9peak_user` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `type` float(3,1) NOT NULL,
+  `type` tinyint(3) NOT NULL,
   `account` varchar(40) NOT NULL,
   `pwd` text,
   `name` varchar(30) DEFAULT NULL COMMENT \'姓名\',
@@ -42,7 +42,7 @@ class PeakUser extends Migration
 		DB::statement('CREATE TABLE IF NOT EXISTS `9peak_oauther` (
   `id` varchar(50) NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `type` tinyint(4) NOT NULL,
+  `type` tinyint(3) NOT NULL,
   UNIQUE KEY `id` (`id`,`type`),
   UNIQUE KEY `user_id` (`user_id`,`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=\'授权用户\';');
