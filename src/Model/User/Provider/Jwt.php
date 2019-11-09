@@ -2,7 +2,7 @@
 
 namespace Peak\Model\User\Jwt;
 
-trait Provider
+trait Jwt
 {
 
 

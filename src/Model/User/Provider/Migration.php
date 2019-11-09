@@ -1,10 +1,10 @@
 <?php
 
-namespace Peak\Model\User\Publish;
+namespace Peak\Model\User\Provider;
 
 use Illuminate\Support\ServiceProvider;
 
-class Provider extends ServiceProvider
+class Migration extends ServiceProvider
 {
 
 	public function boot()
@@ -12,7 +12,7 @@ class Provider extends ServiceProvider
 		// 创建迁移
 		$this->publishes(
 			[
-				__DIR__.'/migration.php' => database_path('migrations/2018_09_13_170327_peak_user.php'),
+				__DIR__.'/sql.php' => database_path('migrations/2018_09_13_170327_peak_user.php'),
 			],
 			'migration'
 		);
