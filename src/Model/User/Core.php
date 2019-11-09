@@ -75,15 +75,6 @@ class Core extends Authenticatable
 	}
 
 
-	/**
-	 * 手动设置密码
-	 * */
-	public function setPwd($pwd)
-	{
-		$this->attributes['pwd'] = bcrypt($pwd);
-		return $this;
-	}
-
 
 	/**
 	 * 自动设置密码
