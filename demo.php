@@ -4,7 +4,7 @@ include 'vendor/autoload.php';
 
 use \Firebase\JWT\JWT;
 
-
+echo str_random(9, -10), '<br>';
 
 $key = "example_key";
 $token = array(

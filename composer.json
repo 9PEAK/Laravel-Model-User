@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">= 5.6",
-        "9peak/php-plugin": "^1.1.7",
+        "9peak/php-plugin": "^2.0",
         "firebase/php-jwt": "~v5.0.0"
     },
     "require-dev": {},

@@ -43,10 +43,6 @@ class Core extends Authenticatable
 	{
 		parent::boot();
 
-		static::addGlobalScope('type', function (Builder $builder) {
-			defined('static::TYPE') && $builder->where('type', static::TYPE);
-		});
-
 		static::saving(function($model) {
 			$model->type = static::TYPE;
 		});
@@ -59,9 +55,7 @@ class Core extends Authenticatable
 	static function existAccount ($account, $id=0)
 	{
 		$qry = static::where('account', $account);
-		if ($id) {
-			$qry->where('id', '!=', $id);
-		}
+        $id && $qry->where('id', '!=', $id);
 		return $qry->count();
 	}
 
@@ -104,6 +98,7 @@ class Core extends Authenticatable
 	{
 		return $query->where('status', $status);
 	}
+
 
 	/**
 	 * 搜索用户组

@@ -9,7 +9,7 @@ class Encryptor
 
     use \Peak\Plugin\Debuger\Base;
 
-    private static $config = [
+    protected static $config = [
         'key' => '',
         'alg' => '',
         'exp' => 0,

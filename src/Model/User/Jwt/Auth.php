@@ -7,6 +7,8 @@ use Peak\Model\User\Core as M;
 class Auth extends Encryptor
 {
 
+    use \Peak\Plugin\Cache\Laravel;
+
 
     public function login ($account, $pwd, array $condition=null)
     {
@@ -25,23 +27,29 @@ class Auth extends Encryptor
 
     /**
      * 签发Token
-     * @param array $payload
+     * @param M $user 用户
      * @param string $pref
      */
-    public function sign (array $payload, $pref='Bearer ')
+    public function sign (M $user, $pref='Bearer ')
     {
-        return (string)$pref.self::encode($payload);
+        self::set_cache($user, $user->id, self::$config['exp']);
+        $user = [
+            'sub' => $user->id
+        ];
+        return (string)$pref.self::encode($user);
     }
 
 
     /**
      * 验证Token
-     * @param $token
-     * @return bool|object
+     * @param string $token
+     * @return null|object
      */
     public function check ($token)
     {
-        return self::decode($token);
+        if ($token = self::decode($token)) {
+            return self::get_cache($token->sub);
+        }
     }
 
 
