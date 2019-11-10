@@ -2,7 +2,7 @@
 
 namespace Peak\Model\User\Jwt;
 
-use Peak\Model\User\Core as M;
+use Peak\Model\User\Config as M;
 
 class Auth extends Encryptor
 {
