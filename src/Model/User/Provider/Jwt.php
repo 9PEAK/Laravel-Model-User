@@ -1,6 +1,6 @@
 <?php
 
-namespace Peak\Model\User\Jwt;
+namespace Peak\Model\User\Provider;
 
 trait Jwt
 {
