@@ -2,6 +2,11 @@
 
 include 'vendor/autoload.php';
 
+use Peak\Model\User\Config;
+//use  as tb;
+
+echo Peak\Model\User::USER_TB,' <br>';
+
 use \Firebase\JWT\JWT;
 
 echo str_random(9, -10), '<br>';
