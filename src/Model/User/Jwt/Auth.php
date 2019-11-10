@@ -18,9 +18,8 @@ class Auth extends Encryptor
 
         if (!$qry) return self::debug('用户不存在。');
 
-        $x = $qry->pwd;
-        $qry->pwd = $pwd;
-        return $x==$pwd ? $qry : self::debug('密码不正确。');
+        Hash::check($pwd, $qry->pwd);
+        return Hash::check($pwd, $qry->pwd) ? $qry : self::debug('密码不正确。');
     }
 
 
