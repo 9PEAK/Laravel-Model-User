@@ -3,7 +3,6 @@
 include 'vendor/autoload.php';
 
 use Peak\Model\User\Config;
-//use  as tb;
 
 echo Peak\Model\User::USER_TB,' <br>';
 

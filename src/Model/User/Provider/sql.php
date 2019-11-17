@@ -17,7 +17,7 @@ class PeakUser extends Migration
 		DB::statement('CREATE TABLE IF NOT EXISTS `9peak_user` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `type` tinyint(3) NOT NULL,
-  `account` varchar(40) NOT NULL,
+  `account` varchar(40) default NULL,
   `pwd` text,
   `name` varchar(30) DEFAULT NULL COMMENT \'姓名\',
   `photo` text COMMENT \'头像照片url\',

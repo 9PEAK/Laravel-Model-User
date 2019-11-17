@@ -6,8 +6,8 @@ final class Config
 {
 
 
-    const USER_TB = '9peak_user';
-    const OAUTHER_TB = '9peak_oauther';
+    const TB_USER = '9peak_user';
+    const TB_OAUTH = '9peak_oauther';
     const MODEL_TIMESTAMPS = false;
     const MODEL_FILLABLE = [
         'account' => 'account',

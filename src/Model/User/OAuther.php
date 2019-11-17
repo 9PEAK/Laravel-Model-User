@@ -2,11 +2,17 @@
 
 namespace Peak\Model\User;
 
-const TB = '9peak_oauther';
-
 trait OAuther
 {
 
+
+    /**
+     * 获取OAuther数据表(与方法同名)
+     */
+    final protected static function table_oauth ()
+    {
+        return @static::${__FUNCTION__};
+    }
 
 
     /**
@@ -17,13 +23,13 @@ trait OAuther
     static function findByOAuther ($id, $type)
     {
         $user = (new static)->getTable();
-        $oauth = TB;
+        $oauth = self::table_oauth();
 
         return static::query()
             ->select($user.'.*')
+            ->join($oauth, $user.'.id', '=', $oauth.'.user_id')
             ->where($oauth.'.type', (int)$type)
             ->where($oauth.'.id', $id)
-            ->join($user, $user.'.id', '=', $oauth.'.user_id')
             ->first();
     }
 
@@ -38,21 +44,37 @@ trait OAuther
     }
 
 
+    /**
+     * 保存OAuther
+     * @param string $id
+     * @param int $type 类型
+     */
     public function saveOAuther ($id, $type)
     {
 
-        $qry = \DB::table(TB);
+        \DB::transaction(function () use (&$id, &$type){
+            $this->deleteOAuther($type);
 
-        if (isset($id)) {
+            $qry = \DB::table(self::table_oauth());
             $qry->insert([
                 'id' => $id,
                 'type' => $type,
                 'user_id' => $this->id,
             ]);
-        } else {
-            $qry->where('id', $id)->delete();
-        }
+        });
+    }
 
+
+    /**
+     * 删除OAuther
+     * @param int $type 类型
+     */
+    public function deleteOAuther ($type)
+    {
+        $qry = \DB::table(self::table_oauth());
+        $qry->where('user_id', $this->id)
+            ->where('type', $type)
+            ->delete();
     }
 
 
